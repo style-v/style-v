@@ -1,0 +1,29 @@
+{
+  "name": "style-v",
+  "version": "1.0.0",
+  "description": "Virtually styled Vue.js components Edit",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/style-v/style-v.git"
+  },
+  "author": "style-v (https://github.com/style-v)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/style-v/style-v/issues"
+  },
+  "devDependencies": {
+    "eslint": "^4.1.1",
+    "eslint-config-prettier": "^2.3.0",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-plugin-import": "^2.6.1",
+    "eslint-plugin-prettier": "^2.1.2",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "prettier": "^1.5.2"
+  },
+  "homepage": "https://github.com/style-v/style-v#readme"
+}
