@@ -1,15 +1,14 @@
 <script>
 import Vue from "vue";
 import { hocAll } from "../../../../src/hoc";
-import { getAllCompotents } from "../lib/get-all-compotents";
 import { vStyleDirective } from "../../../../src/directive";
+
+import Home from "./../components/Home";
 
 Vue.directive("vstyle", vStyleDirective);
 
-const components = hocAll(getAllCompotents());
-
 export default {
-  components,
+  components: hocAll({ Home }),
   data: function() {
     return {
       currentComponent: "Home",
@@ -36,6 +35,6 @@ export default {
 <template lang="pug">
   div.app
     div.active-component
-      component(:is="currentComponent", :style-tree="currentComponentStyleTree")
+      Home(:style-tree="currentComponentStyleTree")
     div.toolbar
 </template>
