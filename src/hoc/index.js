@@ -70,10 +70,13 @@ function hocChild(hash, component) {
     render: function(createElement, context) {
       const { styleV } = component;
       const { data } = context;
+      const { directives } = data;
+      const styleVNamedComponent = getStyleVDirective(directives);
 
-      data.style = computeStyle(styleV, styleTree, hash);
+      data.style = computeStyle(styleV, styleTree, hash, styleVNamedComponent);
 
       console.log("hocChild hash", hash);
+      console.log("hocChild styleTree", styleTree);
       console.log("hocChild component", component);
       console.log("hocChild context", context);
       console.log("hocChild data", data);
@@ -86,11 +89,18 @@ function hocChild(hash, component) {
   return functionalComponent;
 }
 
-function computeStyle(styleV, styleTree, hash) {
+function computeStyle(styleV, styleTree, hash, styleVNamedComponent) {
   const mergeredObject = {};
 
   if (styleTree) {
     Object.keys(styleV).forEach(varName => {
+      // TODO: This needs to be recuersive incause you want to provide a bigger
+      // nested tree of components maybe?
+      if (styleTree[hash] && styleTree[hash][styleVNamedComponent]) {
+        return (mergeredObject[`--${varName}`] =
+          styleTree[hash][styleVNamedComponent][varName]);
+      }
+
       if (styleTree[varName]) {
         return (mergeredObject[`--${varName}`] = styleTree[varName]);
       }
@@ -100,4 +110,16 @@ function computeStyle(styleV, styleTree, hash) {
   }
 
   return mergeredObject;
+}
+
+function getStyleVDirective(directives) {
+  let styleVnamedDirectives = null;
+
+  Object.keys(directives).forEach(directive => {
+    if (directives[directive].name === "style-v") {
+      styleVnamedDirectives = directives[directive].value;
+    }
+  });
+
+  return styleVnamedDirectives;
 }
