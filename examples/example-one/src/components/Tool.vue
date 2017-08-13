@@ -5,7 +5,7 @@ import { vStyleDirective } from "../../../../src/directive";
 
 import Home from "./../components/Home";
 
-Vue.directive("vstyle", vStyleDirective);
+Vue.directive("styleV", vStyleDirective);
 
 export default {
   components: hocAll({ Home }),
@@ -13,7 +13,7 @@ export default {
     return {
       currentComponent: "Home",
       currentComponentStyleTree: {
-        header: {
+        PageHeader: {
           headerOne: {
             colour: "red"
           },

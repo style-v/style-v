@@ -19,8 +19,8 @@ export default {
 
 <template lang="pug">
   div.main
-    page-header(v-vstyle="'headerOne'")
-    page-header(v-vstyle="'headerTwo'")
+    page-header(v-style-v="'headerOne'")
+    page-header(v-style-v="'headerTwo'")
 
     p Hello World
 </template>
